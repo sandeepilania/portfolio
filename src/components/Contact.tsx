@@ -14,19 +14,19 @@ export default function Contact() {
           <div className="flex flex-wrap gap-3">
             <a
               className="rounded-full px-5 py-2.5 text-sm font-semibold text-white bg-gradient-to-r from-indigo-700 to-sky-600 hover:opacity-95 transition shadow-md shadow-indigo-500/15"
-              href="mailto:you@example.com"
+              href="mailto:sandeepilania@gmail.com"
             >
-              you@example.com
+              sandeepilania@gmail.com
             </a>
             <a
               className="rounded-full border border-zinc-200/70 bg-white/70 px-5 py-2.5 text-sm font-semibold text-zinc-800 hover:bg-white transition backdrop-blur"
-              href="https://www.linkedin.com/"
+              href="https://www.linkedin.com/in/sandeep-pilania"
             >
               LinkedIn
             </a>
             <a
               className="rounded-full border border-zinc-200/70 bg-white/70 px-5 py-2.5 text-sm font-semibold text-zinc-800 hover:bg-white transition backdrop-blur"
-              href="https://github.com/"
+              href="https://github.com/sandeepilania/"
             >
               GitHub
             </a>

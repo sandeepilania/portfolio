@@ -43,7 +43,9 @@ export default function WorkCard({ item }: { item: WorkItem }) {
       </div>
 
       {/* short summary instead of highlights */}
-      <p className="mt-5 text-sm text-zinc-700">{item.summary}</p>
+      <p className="mt-5 text-sm text-zinc-700">
+  {item.summary ?? item.impact?.[0] ?? item.approach?.[0] ?? ""}
+</p>
     </motion.div>
   );
 }

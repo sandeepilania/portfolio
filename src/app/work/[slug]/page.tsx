@@ -1,3 +1,5 @@
+// app/work/[slug]/page.tsx (your existing file)
+
 import Container from "@/components/Container";
 import { work } from "@/content/work";
 import { notFound } from "next/navigation";
@@ -8,7 +10,6 @@ export function generateStaticParams() {
   return work.map((w) => ({ slug: w.slug }));
 }
 
-// ✅ Next.js 16: params may be a Promise in some builds
 export default async function WorkDetailPage({
   params,
 }: {
@@ -55,6 +56,7 @@ export default async function WorkDetailPage({
             ))}
           </div>
 
+          {/* Technologies (already there) */}
           <div className="mt-6 flex flex-wrap gap-2">
             {item.stack.map((s) => (
               <span key={s} className="rounded-full bg-gradient-to-r from-slate-900/5 to-slate-900/0 px-3 py-1 text-xs text-zinc-700">
@@ -71,6 +73,37 @@ export default async function WorkDetailPage({
         <SectionBlock title="Implementation" bullets={item.implementation} />
         <SectionBlock title="Impact" bullets={item.impact} />
       </div>
+
+      {/* NEW: Dummy example (for model projects + also ok for system projects) */}
+      {item.example && (
+        <div className="py-4">
+          <GlassCard tone="teal">
+            <h2 className="text-base font-semibold tracking-tight text-zinc-900">
+              {item.example.title ?? "Example (simplified)"}
+            </h2>
+
+            <div className="mt-4 grid gap-4 md:grid-cols-2">
+              <div className="rounded-xl border border-zinc-200/70 bg-white/70 p-4 backdrop-blur">
+                <div className="text-xs font-semibold text-zinc-600">Input</div>
+                <pre className="mt-2 whitespace-pre-wrap text-sm text-zinc-800">{item.example.input}</pre>
+              </div>
+
+              <div className="rounded-xl border border-zinc-200/70 bg-white/70 p-4 backdrop-blur">
+                <div className="text-xs font-semibold text-zinc-600">Output</div>
+                <pre className="mt-2 whitespace-pre-wrap text-sm text-zinc-800">{item.example.output}</pre>
+              </div>
+            </div>
+
+            {item.example.notes?.length ? (
+              <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-zinc-700">
+                {item.example.notes.map((n) => (
+                  <li key={n}>{n}</li>
+                ))}
+              </ul>
+            ) : null}
+          </GlassCard>
+        </div>
+      )}
     </Container>
   );
 }
