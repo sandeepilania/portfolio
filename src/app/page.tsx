@@ -1,65 +1,154 @@
-import Image from "next/image";
+import Container from "@/components/Container";
+import Link from "next/link";
+import { work } from "@/content/work";
+import GlassCard from "@/components/GlassCard";
+import MotionIn from "@/components/MotionIn";
 
-export default function Home() {
+export default function HomePage() {
+  const featured = work.slice(0, 2);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <Container>
+      {/* ================= HERO ================= */}
+      <MotionIn>
+        <section className="py-10">
+          <div className="inline-flex items-center gap-2 rounded-full border border-zinc-200/70 bg-white/70 px-4 py-2 text-xs text-zinc-700 backdrop-blur">
+            <span className="h-2 w-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500" />
+            Senior ML Engineer • Production LLM Systems • Agentic Workflows
+          </div>
+
+          <h1 className="mt-6 text-4xl font-semibold tracking-tight sm:text-6xl">
+            <span className="bg-gradient-to-r from-indigo-700 via-sky-600 to-teal-600 bg-clip-text text-transparent">
+              I build AI systems that ship
+            </span>
+            <span className="text-zinc-900">
+              : retrieval, memory, evaluation, and observability — not just prompts.
+            </span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+
+          <p className="mt-5 max-w-3xl text-base text-zinc-700">
+            I design and operate production-grade NLP + LLM platforms for enterprise workflows,
+            focusing on measurable quality gates and architecture that scales.
           </p>
+
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link
+              href="/work"
+              className="rounded-full px-5 py-2.5 text-sm font-semibold text-white
+                         bg-gradient-to-r from-indigo-700 to-sky-600
+                         hover:opacity-95 transition shadow-md shadow-indigo-500/15"
+            >
+              Explore my work
+            </Link>
+
+            <Link
+              href="/architecture"
+              className="rounded-full px-5 py-2.5 text-sm font-semibold text-zinc-900
+                         border border-zinc-200/70 bg-white/70 hover:bg-white
+                         transition backdrop-blur"
+            >
+              My architecture playbook
+            </Link>
+          </div>
+        </section>
+      </MotionIn>
+
+      {/* ================= FEATURED ================= */}
+      <section className="py-12">
+        <div className="flex items-end justify-between gap-6">
+          <div>
+            <h2 className="text-2xl font-semibold tracking-tight text-zinc-900">
+              Featured Case Studies
+            </h2>
+            <p className="mt-2 text-zinc-700">
+              Selected projects with architecture, implementation details, and measurable impact.
+            </p>
+          </div>
+
+          <Link href="/work" className="text-sm text-zinc-600 hover:text-zinc-900 transition">
+            View all →
+          </Link>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <div className="mt-7 grid gap-5 md:grid-cols-2">
+          {featured.map((p, idx) => (
+            <Link key={p.slug} href={`/work/${p.slug}`} className="block">
+              <GlassCard tone={idx % 2 === 0 ? "indigo" : "teal"}>
+                <div className="flex items-start justify-between gap-6">
+                  <div>
+                    <h3 className="text-lg font-semibold tracking-tight text-zinc-900">
+                      {p.title}
+                    </h3>
+                    <p className="mt-2 text-sm text-zinc-700">{p.tagline}</p>
+                  </div>
+
+                  <span className="rounded-full border border-zinc-200/70 bg-white/70 px-3 py-1 text-xs text-zinc-600 backdrop-blur">
+                    Case study
+                  </span>
+                </div>
+
+                <div className="mt-5 grid gap-3 sm:grid-cols-3">
+                  {p.metrics.map((m) => (
+                    <div
+                      key={m.label}
+                      className="rounded-xl border border-zinc-200/70 bg-white/70 p-3 backdrop-blur"
+                    >
+                      <div className="text-xs text-zinc-600">{m.label}</div>
+                      <div className="mt-1 text-sm font-semibold text-zinc-900">{m.value}</div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {p.stack.slice(0, 6).map((s) => (
+                    <span
+                      key={s}
+                      className="rounded-full bg-gradient-to-r from-slate-900/5 to-slate-900/0 px-3 py-1 text-xs text-zinc-700"
+                    >
+                      {s}
+                    </span>
+                  ))}
+                </div>
+              </GlassCard>
+            </Link>
+          ))}
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* ================= EXPLORE ================= */}
+      <section className="py-12">
+        <div className="grid gap-5 md:grid-cols-3">
+          <Link href="/work" className="block">
+            <GlassCard tone="indigo">
+              <h3 className="text-lg font-semibold text-zinc-900">Work</h3>
+              <p className="mt-2 text-sm text-zinc-700">
+                Case studies with architecture, implementation details, and impact metrics.
+              </p>
+              <div className="mt-4 text-sm font-semibold text-indigo-700">Explore →</div>
+            </GlassCard>
+          </Link>
+
+          <Link href="/architecture" className="block">
+            <GlassCard tone="sky">
+              <h3 className="text-lg font-semibold text-zinc-900">Architecture</h3>
+              <p className="mt-2 text-sm text-zinc-700">
+                My design playbook for production RAG, memory, evaluation, and observability.
+              </p>
+              <div className="mt-4 text-sm font-semibold text-sky-700">Explore →</div>
+            </GlassCard>
+          </Link>
+
+          <Link href="/journey" className="block">
+            <GlassCard tone="teal">
+              <h3 className="text-lg font-semibold text-zinc-900">Journey</h3>
+              <p className="mt-2 text-sm text-zinc-700">
+                Timeline of roles and what I shipped at each stage.
+              </p>
+              <div className="mt-4 text-sm font-semibold text-teal-700">Explore →</div>
+            </GlassCard>
+          </Link>
+        </div>
+      </section>
+    </Container>
   );
 }
