@@ -53,7 +53,11 @@ export default function Timeline({
                   {t.title}
                 </div>
 
-                <p className="mt-2 text-sm text-zinc-700">{t.detail}</p>
+                <div className="mt-2 space-y-2">
+                  {t.detail.split("\n\n").map((para, i) => (
+                    <p key={i} className="text-sm text-zinc-700">{para}</p>
+                  ))}
+                </div>
 
                 {t.focus?.length ? (
                   <ul className="mt-3 space-y-1 text-sm text-zinc-700 list-disc pl-5">

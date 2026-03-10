@@ -3,8 +3,8 @@ import Container from "./Container";
 
 const nav = [
   { href: "/work", label: "Work" },
-  { href: "/architecture", label: "Architecture" },
   { href: "/journey", label: "Journey" },
+  { href: "/architecture", label: "Architecture" },
   { href: "/writing", label: "Writing" },
   { href: "/contact", label: "Contact" },
 ];

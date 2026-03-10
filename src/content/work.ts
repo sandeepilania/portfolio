@@ -82,6 +82,58 @@ export type WorkItem = {
 export const work: WorkItem[] = [
   // ---------- AGENTIC ----------
   {
+    slug: "transaction-analysis-legal-drafting",
+    title: "Transaction Analysis Agent for Legal Drafting",
+    tagline:
+      "Drafting orchestrator powered by Vault MCP integration and dynamic tool creation at runtime via knowledge base.",
+    summary:
+      "Agentic system that analyses legal transactions and orchestrates document drafting by dynamically surfacing the right tools based on transaction context retrieved from a knowledge base.",
+    date: "2026-03",
+    pillars: ["agentic", "retrieval"],
+    modelProject: true,
+    stack: [
+      "Agent Orchestration",
+      "MCP (Vault)",
+      "Knowledge Base",
+      "Dynamic Tool Creation",
+      "RAG",
+      "FastAPI",
+      "Python",
+    ],
+    metrics: [
+      { label: "Pattern", value: "Drafting orchestrator + Vault MCP" },
+      { label: "Tools", value: "Runtime-generated from knowledge base" },
+      { label: "Context", value: "Transaction-aware tool selection" },
+    ],
+    problem: [
+      "Legal drafting for M&A and transaction work spans diverse document types — a static toolset cannot cover the breadth of clause, obligation, and risk patterns across deal structures.",
+      "Practitioners need an agent that understands what a transaction requires and surfaces only the relevant drafting capabilities for that context.",
+    ],
+    approach: [
+      "Transaction context is extracted and used to query a knowledge base that maps deal patterns to drafting tools.",
+      "Tools are created dynamically at runtime based on knowledge base retrieval, ensuring the agent's tool surface matches the transaction — not a fixed schema.",
+      "Vault MCP integration handles secure document read/write, maintaining provenance and access controls throughout the drafting workflow.",
+    ],
+    implementation: [
+      "Orchestrator agent parses transaction metadata and issues knowledge base queries to determine applicable drafting tools for the deal type.",
+      "Dynamic tool creation generates callable tool definitions at runtime from KB results, injected into the agent's action space for that session.",
+      "Vault MCP provides structured document access and write-back, enabling the agent to read source agreements and draft output sections with auditability.",
+      "Quality gates validate drafted sections against transaction context before finalisation.",
+    ],
+    impact: [
+      "Enables coverage of diverse transaction types without maintaining a large static tool registry.",
+      "Drafting actions remain grounded in both the transaction context and secure document provenance via Vault.",
+    ],
+    example: {
+      input: `Transaction: "Acquisition of SaaS company — IP reps, data privacy obligations, earnout provisions"\nVault: Source SPA + disclosure schedules`,
+      output: `Tools created: ["IPRepsTool", "DataPrivacyClauseTool", "EarnoutDraftingTool"]\nDraft: section-level output with clause suggestions and risk flags`,
+      notes: [
+        "Tool availability adapts per transaction — a real estate deal surfaces entirely different tools than a tech acquisition.",
+      ],
+    },
+  },
+
+  {
     slug: "agentic-mandad-due-diligence",
     title: "Agentic M&A Due Diligence Copilot (Daylight)",
     tagline:

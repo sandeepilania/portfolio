@@ -9,8 +9,24 @@ export type TimelineItem = {
 
 export const professionalTimeline: TimelineItem[] = [
   {
-    time: "2025 – Present",
-    title: "Senior Data Scientist — GenAI & Agentic Systems (LexisNexis)",
+    time: "March 2026 – Present",
+    title: "Senior Data Scientist II — GenAI & Agentic Systems (LexisNexis)",
+    detail:
+      "Leading engineering-driven development of production GenAI platforms and agentic workflows for enterprise legal and knowledge applications.\n\nKey Initiative: Building a Transaction Analysis Agent for legal drafting — orchestrating document generation via a Vault MCP integration, with dynamic tool creation at runtime powered by a knowledge base to adapt tool availability to transaction context.",
+    focus: [
+      "Agentic workflows and long-running orchestration (event-driven patterns)",
+      "Memory-backed agent state for multi-step reasoning",
+      "LLM evaluation frameworks and production quality monitoring",
+      "Architecture patterns for reliable GenAI delivery",
+    ],
+    growth:
+      "Moved into senior technical leadership of agentic product delivery — owning architecture decisions, MCP integrations, and runtime tool orchestration that directly shape the product's GenAI capabilities.",
+    learning:
+      "Dynamic tool creation at runtime requires a strong knowledge-base foundation — the quality of tool definitions and retrieval logic determines how reliably an agent can reason and act in novel transaction contexts.",
+  },
+  {
+    time: "2025 – Feb 2026",
+    title: "Senior Data Scientist I — GenAI & Agentic Systems (LexisNexis)",
     detail:
       "Leading engineering-driven development of production GenAI platforms and agentic workflows for enterprise legal and knowledge applications.",
     focus: [

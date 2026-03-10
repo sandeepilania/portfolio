@@ -37,6 +37,10 @@ export default function ArchitecturePlaybook() {
         title="How I Design AI Systems"
         subtitle="My default architecture principles for production RAG, agentic workflows, and LLM platforms."
       >
+        <div className="mb-6 rounded-xl border border-amber-200 bg-amber-50/70 px-4 py-3 text-sm text-amber-800">
+          <span className="font-semibold">🚧 Work in progress</span> — This section is actively being developed and will be expanded with detailed architecture case studies, diagrams, and design patterns.
+        </div>
+
         <div className="grid gap-4 md:grid-cols-2">
           {principles.map((p, idx) => (
             <GlassCard

@@ -8,8 +8,12 @@ export default function Writing() {
       <Section
         id="writing"
         title="Writing"
-        subtitle="I publish technical deep dives on production LLM systems (evaluation, memory, agent orchestration)."
+        subtitle="Technical writing on production GenAI systems, agentic workflows, and LLM platform design."
       >
+        <div className="mb-6 rounded-xl border border-amber-200 bg-amber-50/70 px-4 py-3 text-sm text-amber-800">
+          <span className="font-semibold">🚧 Work in progress</span> — Articles and case studies are currently being written. Check back soon.
+        </div>
+
         <GlassCard tone="teal">
           <p className="text-sm text-zinc-700">
             Coming soon: 3 case studies. Add your Medium links here once published.
